@@ -1,11 +1,17 @@
-<%= render '_bannerList' %>
+<%= render 'navbar' %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media1.fdncms.com/inlander/imager/u/original/24484900/movie-theater.jpg);">
+  <div class="container">
+    <h1>Save any kind of movies</h1>
+    <p>Classic</p>
+  </div>
+</div>
 <div>
   <div>
     <h3>My Lists</h3>
     <div>
       <% @lists.each do |list| %>
-        <div class="card-list" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(list.url)">
-        <%= list.name %>
+        <div class="card-list">
+        <%= link_to list.name, list_path(list) %>
         </div>
       <% end %>
     </div>

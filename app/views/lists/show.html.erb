@@ -1,0 +1,27 @@
+<%= render 'navbar' %>
+<%= render 'banner' %>
+<div>
+  <%= link_to 'Add a movie', new_list_bookmark_path(@list) %>
+  <div>
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="card-movie">
+        <%= image_tag bookmark.movie.poster_url, alt: "Movie poster" %>
+        <div class="card-movie-infos">
+          <div>
+            <div>
+              <h3><%= bookmark.movie.title %></h3>
+              <p><%= bookmark.movie.rating %></p>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p><%= bookmark.movie.overview %></p>
+          </div>
+          <div>
+            <i class="fa-solid fa-quote-left"></i>
+            <p><%= bookmark.comment %></p>
+            <%= link_to 'Delete', bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
